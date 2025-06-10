@@ -1,0 +1,108 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Load Balancer Practical</title>
+	<style>
+		body {
+			font-family: 'Lato', sans-serif;
+			background-color: #C9E4CA; /* Pale mint */
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			max-width: 800px;
+			margin: 40px auto;
+			padding: 20px;
+			background-color: #FFFFFF; /* White */
+			border: 1px solid #ddd;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+		}
+		.header {
+			background-color: #E8D8B7; /* Warm beige */
+			padding: 20px;
+			border-radius: 10px 10px 0 0;
+			text-align: center;
+		}
+		.header h1 {
+			margin: 0;
+			font-size: 36px;
+			font-weight: bold;
+			color: #3E8E41; /* Soft green */
+		}
+		.time-date {
+			font-size: 18px;
+			margin-top: 10px;
+			color: #6c757d; /* Dark gray */
+			text-align: center;
+		}
+		.content {
+			padding: 20px;
+			background-color: #F0F0F0; /* Light gray */
+			text-align: justify;
+		}
+		.content h2 {
+			margin-top: 0;
+			color: #3E8E41; /* Soft green */
+			text-align: center;
+		}
+		.content p {
+			font-size: 16px;
+			color: #444; /* Dark gray */
+			line-height: 1.6;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1 id="greeting"></h1>
+			<div class="time-date">
+				<p id="time"></p>
+				<p id="date"></p>
+			</div>
+		</div>
+		<div class="content">
+			<h2>Load Balancer Practical</h2>
+			<p>This page is designed to demonstrate the functionality of a load balancer. The load balancer distributes incoming traffic across multiple servers to improve responsiveness, reliability, and scalability. This is 2nd server.</p>
+		</div>
+	</div>
+
+	<script>
+		function updateTime() {
+			const timeElement = document.getElementById('time');
+			const dateElement = document.getElementById('date');
+			const greetingElement = document.getElementById('greeting');
+
+			const now = new Date();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+			const seconds = now.getSeconds();
+			const day = now.getDate();
+			const month = now.toLocaleString('default', { month: 'long' });
+			const year = now.getFullYear();
+
+			timeElement.textContent = `Time: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+			dateElement.textContent = `Date: ${day} ${month} ${year}`;
+
+			let greeting;
+			if (hours < 12) {
+				greeting = 'Good Morning!';
+			} else if (hours < 18) {
+				greeting = 'Good Afternoon!';
+			} else {
+				greeting = 'Good Evening!';
+			}
+			greetingElement.textContent = greeting;
+		}
+
+		setInterval(updateTime, 1000);
+		updateTime();
+	</script>
+</body>
+</html>
+
+
